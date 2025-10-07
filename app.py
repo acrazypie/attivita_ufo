@@ -1,14 +1,21 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
-from models import Admin
-
-db = SQLAlchemy()
+from pathlib import Path
+from models import db, Admin
 
 
 def create_app():
     app = Flask(__name__)
-    app.config.from_object("config.Config")
+    app.secret_key = "qualcosa_di_casuale"
+
+    BASE_DIR = Path(__file__).resolve().parent
+    DB_DIR = BASE_DIR / "db"
+    DB_DIR.mkdir(exist_ok=True)
+    db_path = DB_DIR / "attivita_ufo.db"
+
+    app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{db_path}"
+    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
     db.init_app(app)
 
     login_manager = LoginManager()

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Registrazione — Attività UFO</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='main.css') }}"
+    />
+  </head>
+  <body class="centered">
+    <form method="post" action="{{ url_for('main.register') }}">
+      <h1>Registrazione Studente</h1>
+      <label for="nome">Nome</label>
+      <input id="nome" name="nome" type="text" required />
+      <label for="cognome">Cognome</label>
+      <input id="cognome" name="cognome" type="text" required />
+      <label for="scuola">Scuola</label>
+      <input id="scuola" name="scuola" type="text" required />
+      <label for="classe">Classe</label>
+      <input id="classe" name="classe" type="text" required />
+      <label for="username">Username</label>
+      <input id="username" name="username" type="text" required />
+      <button type="submit">Crea account</button>
+      <a href="{{ url_for('main.index') }}" class="link">← Torna alla home</a>
+    </form>
+  </body>
+</html>

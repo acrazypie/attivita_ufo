@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Attività UFO — Home</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='main.css') }}"
+    />
+  </head>
+  <body class="centered">
+    <div class="card">
+      <h1>Attività UFO</h1>
+      <p>Benvenuto! Scegli un'azione:</p>
+      <a href="{{ url_for('main.register') }}" class="btn">Registrati</a>
+      <a href="{{ url_for('main.checkin') }}" class="btn">Check-in</a>
+    </div>
+  </body>
+</html>

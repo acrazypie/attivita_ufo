@@ -1,0 +1,133 @@
+/* main.css */
+
+/* ========== variabili colori ========== */
+:root {
+  --dark-bg: #070a15;
+  --dark-card: #0f1324;
+  --text-main: #e7edf6;
+  --text-muted: #9da9b8;
+  --accent: #5bc0eb;
+  --accent-light: #7ddcff;
+  --input-bg: #1b2032;
+  --input-border: #2c3750;
+  --btn-bg: var(--accent);
+  --btn-hover: var(--accent-light);
+}
+
+/* reset base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--dark-bg);
+  color: var(--text-main);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* utilitarie centering */
+.centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+}
+
+/* contenitori */
+.card,
+form {
+  background: var(--dark-card);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  max-width: 360px;
+  width: 100%;
+}
+
+/* tipografia */
+h1 {
+  font-size: 1.9rem;
+  margin-bottom: 1rem;
+}
+p {
+  color: var(--text-muted);
+  margin-bottom: 1.2rem;
+}
+label {
+  display: block;
+  margin-top: 1rem;
+  color: var(--text-muted);
+  text-align: left;
+}
+input {
+  width: 100%;
+  padding: 0.65rem;
+  margin-top: 0.4rem;
+  border: 1px solid var(--input-border);
+  border-radius: 6px;
+  background: var(--input-bg);
+  color: var(--text-main);
+}
+input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* bottoni e link “tipo bottone” */
+button,
+a.btn {
+  display: inline-block;
+  margin-top: 1.2rem;
+  padding: 0.85rem 1.3rem;
+  border: none;
+  border-radius: 8px;
+  background: var(--btn-bg);
+  color: var(--dark-bg);
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+button:hover,
+a.btn:hover {
+  background: var(--btn-hover);
+  transform: translateY(-1px);
+}
+
+/* link semplici */
+a.link {
+  display: block;
+  margin-top: 1rem;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+a.link:hover {
+  color: var(--accent-light);
+}
+
+/* “success message” box */
+.success-card {
+  /* per checkin_success */
+  background: var(--dark-card);
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  text-align: center;
+}
+
+/* responsive */
+@media (max-width: 480px) {
+  .card,
+  form {
+    padding: 1.5rem;
+  }
+  h1 {
+    font-size: 1.6rem;
+  }
+}

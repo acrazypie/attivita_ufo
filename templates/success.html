@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Check-in completato — Attività UFO</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='main.css') }}"
+    />
+  </head>
+  <body class="centered">
+    <div class="success-card">
+      <h1>Check-in riuscito ✅</h1>
+      <p>La tua presenza è stata registrata con successo.</p>
+      <a href="{{ url_for('main.index') }}" class="btn">Torna alla home</a>
+    </div>
+  </body>
+</html>

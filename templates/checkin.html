@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Check-in — Attività UFO</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='main.css') }}"
+    />
+  </head>
+  <body class="centered">
+    <form method="post" action="{{ url_for('main.checkin') }}">
+      <h1>Check-in</h1>
+      <label for="username">Username</label>
+      <input id="username" name="username" type="text" required />
+      <button type="submit">Fai check-in</button>
+      <a href="{{ url_for('main.index') }}" class="link">← Torna alla home</a>
+    </form>
+  </body>
+</html>
