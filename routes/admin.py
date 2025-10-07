@@ -1,26 +1,40 @@
-from flask import Blueprint, render_template, request, redirect, url_for, send_file
-from models import db, User, Presenza
+from flask import Blueprint, render_template, request, redirect, url_for, flash
+from flask_login import login_user, logout_user, login_required
+from models import db, Admin, User, Presenza
 from utils.export import export_user_csv
+from flask import send_file
 
 admin_bp = Blueprint("admin", __name__)
 
 
-# Login admin (molto semplice, senza JWT)
 @admin_bp.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
-        # TODO: autenticazione reale, per ora hardcoded
-        if username == "admin" and password == "password":
+
+        admin = Admin.query.filter_by(username=username).first()
+
+        if admin and admin.check_password(password):
+            login_user(admin)
             return redirect(url_for("admin.dashboard"))
         else:
-            return render_template("admin_login.html", error="Credenziali errate")
+            flash("Credenziali errate ⚠️", "danger")
+            return render_template("admin_login.html")
 
     return render_template("admin_login.html")
 
 
+@admin_bp.route("/logout")
+@login_required
+def logout():
+    logout_user()
+    flash("Logout effettuato ✅", "success")
+    return redirect(url_for("admin.login"))
+
+
 @admin_bp.route("/dashboard", methods=["GET", "POST"])
+@login_required
 def dashboard():
     user = None
     if request.method == "POST":
@@ -30,6 +44,7 @@ def dashboard():
 
 
 @admin_bp.route("/user/<username>")
+@login_required
 def user_detail(username):
     user = User.query.filter_by(username=username).first()
     if not user:
@@ -41,10 +56,10 @@ def user_detail(username):
 
 
 @admin_bp.route("/user/<username>/export")
+@login_required
 def export_user(username):
     user = User.query.filter_by(username=username).first()
     if not user:
         return "Utente non trovato", 404
-
     csv_path = export_user_csv(user)
     return send_file(csv_path, as_attachment=True)
