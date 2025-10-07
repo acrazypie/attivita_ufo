@@ -2,11 +2,16 @@ from flask import Flask
 from flask_login import LoginManager
 from pathlib import Path
 from models import db, Admin
+from utils.create_admin import create_admin_account
+
+# admin di test
+admin_username = "Admin"
+admin_password = "adminUFOsaronno"
 
 
 def create_app():
     app = Flask(__name__)
-    app.secret_key = "qualcosa_di_casuale"
+    app.secret_key = "qualcosa_di_casuale"  # chiave di sicurezza
 
     BASE_DIR = Path(__file__).resolve().parent
     DB_DIR = BASE_DIR / "db"
@@ -34,6 +39,7 @@ def create_app():
 
     with app.app_context():
         db.create_all()
+        create_admin_account(admin_username, admin_password)
 
     return app
 

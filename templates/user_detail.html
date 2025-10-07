@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dettagli Utente — Attività UFO</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='main.css') }}"
+    />
+  </head>
+  <body class="centered">
+    <div class="card" style="max-width: 700px">
+      {% if error %}
+      <h1>⚠️ Errore</h1>
+      <p>{{ error }}</p>
+      <a href="{{ url_for('admin.dashboard') }}" class="btn"
+        >Torna alla dashboard</a
+      >
+      {% else %}
+      <h1>{{ user.nome }} {{ user.cognome }}</h1>
+      <p>Username: {{ user.username }}</p>
+      <p>Classe: {{ user.classe }}</p>
+      <p>Scuola: {{ user.scuola }}</p>
+
+      <h2>Presenze</h2>
+      {% if presenze %}
+      <table
+        style="width: 100%; border-collapse: collapse; color: var(--text-main)"
+      >
+        <thead>
+          <tr>
+            <th
+              style="padding: 8px; border-bottom: 1px solid var(--input-border)"
+            >
+              Data
+            </th>
+            <th
+              style="padding: 8px; border-bottom: 1px solid var(--input-border)"
+            >
+              Ora
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for presenza in presenze %}
+          <tr>
+            <td
+              style="padding: 8px; border-bottom: 1px solid var(--input-border)"
+            >
+              {{ presenza.data.strftime('%d/%m/%Y') }}
+            </td>
+            <td
+              style="padding: 8px; border-bottom: 1px solid var(--input-border)"
+            >
+              {{ presenza.data.strftime('%H:%M') }}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+      <p>Nessuna presenza registrata.</p>
+      {% endif %}
+
+      <a
+        href="{{ url_for('admin.export_user', username=user.username) }}"
+        class="btn"
+        >📄 Esporta CSV</a
+      >
+      <a href="{{ url_for('admin.dashboard') }}" class="link"
+        >← Torna alla dashboard</a
+      >
+      {% endif %}
+    </div>
+  </body>
+</html>

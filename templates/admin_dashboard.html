@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dashboard Admin — Attività UFO</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='main.css') }}"
+    />
+  </head>
+  <body class="centered">
+    <div class="card">
+      <h1>Dashboard Admin</h1>
+
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %}
+      <div class="flash-messages">
+        {% for category, message in messages %}
+        <div class="flash {{ category }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+      {% endif %} {% endwith %}
+
+      <form method="post" action="{{ url_for('admin.dashboard') }}">
+        <label for="username">Cerca utente per username</label>
+        <input
+          id="username"
+          name="username"
+          type="text"
+          placeholder="es. mrossi"
+        />
+        <button type="submit">Cerca</button>
+      </form>
+
+      {% if user %} {% if user %}
+      <div class="card">
+        <h2>{{ user.nome }} {{ user.cognome }}</h2>
+        <p>Classe: {{ user.classe }} — Scuola: {{ user.scuola }}</p>
+        <a
+          href="{{ url_for('admin.user_detail', username=user.username) }}"
+          class="btn"
+          >Dettagli utente</a
+        >
+        <a
+          href="{{ url_for('admin.export_user', username=user.username) }}"
+          class="btn"
+          >Esporta CSV</a
+        >
+      </div>
+      {% else %}
+      <p>Nessun utente trovato.</p>
+      {% endif %} {% endif %}
+
+      <a href="{{ url_for('admin.logout') }}" class="link">Logout</a>
+    </div>
+  </body>
+</html>

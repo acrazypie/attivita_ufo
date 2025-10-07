@@ -131,3 +131,23 @@ a.link:hover {
     font-size: 1.6rem;
   }
 }
+
+/* flash messages */
+.flash-messages {
+  margin-bottom: 1em;
+}
+.flash {
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  font-weight: 500;
+  text-align: center;
+}
+.flash.success {
+  background-color: #2ecc71;
+  color: #fff;
+}
+.flash.danger {
+  background-color: #e74c3c;
+  color: #fff;
+}
