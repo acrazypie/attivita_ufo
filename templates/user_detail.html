@@ -35,11 +35,6 @@
             >
               Data
             </th>
-            <th
-              style="padding: 8px; border-bottom: 1px solid var(--input-border)"
-            >
-              Ora
-            </th>
           </tr>
         </thead>
         <tbody>
@@ -49,11 +44,6 @@
               style="padding: 8px; border-bottom: 1px solid var(--input-border)"
             >
               {{ presenza.data.strftime('%d/%m/%Y') }}
-            </td>
-            <td
-              style="padding: 8px; border-bottom: 1px solid var(--input-border)"
-            >
-              {{ presenza.data.strftime('%H:%M') }}
             </td>
           </tr>
           {% endfor %}

@@ -37,10 +37,11 @@ def logout():
 @login_required
 def dashboard():
     user = None
+    users = User.query.all()
     if request.method == "POST":
         username = request.form.get("username")
         user = User.query.filter_by(username=username).first()
-    return render_template("admin_dashboard.html", user=user)
+    return render_template("admin_dashboard.html", users=users, user=user)
 
 
 @admin_bp.route("/user/<username>")

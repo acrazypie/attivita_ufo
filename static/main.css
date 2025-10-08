@@ -111,6 +111,67 @@ a.link:hover {
   color: var(--accent-light);
 }
 
+/* drop-down admin menu */
+.username-form {
+  position: relative;
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.username-form h2 {
+  margin-bottom: 20px;
+}
+
+.username-form label {
+  display: block;
+  text-align: left;
+  font-size: 14px;
+  font-weight: bold;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.username-form input,
+.username-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--input-border);
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border 0.3s;
+  margin-bottom: 15px;
+}
+
+.username-form input:focus,
+.username-form textarea:focus {
+  border-color: var(--btn-hover);
+  outline: none;
+}
+
+.username-form select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--input-border);
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border 0.3s;
+  margin-bottom: 15px;
+}
+
+.username-form select:focus {
+  border-color: var(--btn-hover);
+  outline: none;
+}
+.username-form select option {
+  padding: 10px;
+}
+.username-form select:hover {
+  border-color: var(--btn-hover);
+}
+
 /* “success message” box */
 .success-card {
   /* per checkin_success */

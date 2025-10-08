@@ -22,18 +22,24 @@
       </div>
       {% endif %} {% endwith %}
 
-      <form method="post" action="{{ url_for('admin.dashboard') }}">
-        <label for="username">Cerca utente per username</label>
-        <input
-          id="username"
-          name="username"
-          type="text"
-          placeholder="es. mrossi"
-        />
-        <button type="submit">Cerca</button>
-      </form>
+      <div class="username-form">
+        <h2>Seleziona un utente</h2>
+        <form method="post" action="{{ url_for('admin.dashboard') }}">
+          <label for="username">Username:</label>
+          <select id="username" name="username" required>
+            <option value="" disabled selected>Seleziona un username</option>
+            {% for user in users %}
+            <option value="{{ user.username }}">
+              {{ user.nome }} {{ user.cognome }}
+            </option>
+            {% endfor %}
+          </select>
 
-      {% if user %} {% if user %}
+          <button type="submit" class="btn">Cerca</button>
+        </form>
+      </div>
+
+      {% if users %} {% if user %}
       <div class="card">
         <h2>{{ user.nome }} {{ user.cognome }}</h2>
         <p>Classe: {{ user.classe }} — Scuola: {{ user.scuola }}</p>
