@@ -1,5 +1,18 @@
 import csv, os
 from datetime import datetime
+from app.models.models import db, Admin
+
+
+def create_admin_account(username, password):
+
+    existing = Admin.query.filter_by(username=username).first()
+
+    if not existing:
+        new_admin = Admin()
+        new_admin.username = username
+        new_admin.set_password(password)
+        db.session.add(new_admin)
+        db.session.commit()
 
 
 def export_user_csv(user):

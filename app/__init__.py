@@ -1,20 +1,17 @@
-import os
 from flask import Flask
 from flask_login import LoginManager
 from pathlib import Path
-from models import db, Admin
-from utils.create_admin import create_admin_account
-
-# admin di test
-admin_username = "admin"
-admin_password = "admin123"
-
-# crea app Flask
-app = Flask(__name__)
+from .models.models import db, Admin
+from .utils import create_admin_account
+from config import config
 
 
 def create_app(app):
-    app.secret_key = "qualcosa_di_casuale"  # chiave di sicurezza
+
+    admin_username = config.ADMIN_USER
+    admin_password = config.ADMIN_PASS
+
+    app.secret_key = config.SECRET_KEY
 
     BASE_DIR = Path(__file__).resolve().parent
     DB_DIR = BASE_DIR / "db"
@@ -35,7 +32,7 @@ def create_app(app):
     def load_user(admin_id):
         return Admin.query.get(int(admin_id))
 
-    from routes import main_bp, admin_bp
+    from .routes import main_bp, admin_bp
 
     app.register_blueprint(main_bp)
     app.register_blueprint(admin_bp, url_prefix="/admin")
@@ -43,9 +40,3 @@ def create_app(app):
     with app.app_context():
         db.create_all()
         create_admin_account(admin_username, admin_password)
-
-
-if __name__ == "__main__":
-    create_app(app)
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)

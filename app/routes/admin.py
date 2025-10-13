@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import login_user, logout_user, login_required
-from models import db, Admin, User, Presenza
-from utils.export import export_user_csv, export_all_users
+from app.models.models import db, Admin, User, Presenza
+from app.utils import export_user_csv, export_all_users
 from flask import send_file
 
 admin_bp = Blueprint("admin", __name__)
