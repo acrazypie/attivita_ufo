@@ -6,8 +6,8 @@
   --dark-card: #0f1324;
   --text-main: #e7edf6;
   --text-muted: #9da9b8;
-  --accent: #5bc0eb;
-  --accent-light: #7ddcff;
+  --accent: #ff11bc;
+  --accent-light: #00c3da;
   --input-bg: #1b2032;
   --input-border: #2c3750;
   --btn-bg: var(--accent);
@@ -21,7 +21,7 @@
   padding: 0;
 }
 body {
-  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   background: var(--dark-bg);
   color: var(--text-main);
   line-height: 1.5;
@@ -83,11 +83,12 @@ button,
 a.btn {
   display: inline-block;
   margin-top: 1.2rem;
+  margin-left: 0.15rem;
+  margin-right: 0.15rem;
   padding: 0.85rem 1.3rem;
   border: none;
-  border-radius: 8px;
   background: var(--btn-bg);
-  color: var(--dark-bg);
+  color: var(--text-main);
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;

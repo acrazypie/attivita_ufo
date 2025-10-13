@@ -22,6 +22,11 @@
       </div>
       {% endif %} {% endwith %}
 
+      <div class="card">
+        <h2>Esporta CSV Totale</h2>
+        <a href="{{ url_for('admin.export_all') }}" class="btn">Download CVS</a>
+      </div>
+
       <div class="username-form">
         <h2>Seleziona un utente</h2>
         <form method="post" action="{{ url_for('admin.dashboard') }}">

@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import login_user, logout_user, login_required
 from models import db, Admin, User, Presenza
-from utils.export import export_user_csv
+from utils.export import export_user_csv, export_all_users
 from flask import send_file
 
 admin_bp = Blueprint("admin", __name__)
@@ -63,4 +63,14 @@ def export_user(username):
     if not user:
         return "Utente non trovato", 404
     csv_path = export_user_csv(user)
+    return send_file(csv_path, as_attachment=True)
+
+
+@admin_bp.route("/export/users")
+@login_required
+def export_all():
+    users = User.query.all()
+    if not users:
+        return "Nessun utente regitrato", 404
+    csv_path = export_all_users(users)
     return send_file(csv_path, as_attachment=True)
