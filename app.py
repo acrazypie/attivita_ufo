@@ -9,9 +9,11 @@ from utils.create_admin import create_admin_account
 admin_username = "admin"
 admin_password = "admin123"
 
+# crea app Flask
+app = Flask(__name__)
 
-def create_app():
-    app = Flask(__name__)
+
+def create_app(app):
     app.secret_key = "qualcosa_di_casuale"  # chiave di sicurezza
 
     BASE_DIR = Path(__file__).resolve().parent
@@ -42,10 +44,8 @@ def create_app():
         db.create_all()
         create_admin_account(admin_username, admin_password)
 
-    return app
-
 
 if __name__ == "__main__":
-    app = create_app()
+    create_app(app)
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
