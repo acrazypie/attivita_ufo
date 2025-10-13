@@ -5,8 +5,8 @@ from models import db, Admin
 from utils.create_admin import create_admin_account
 
 # admin di test
-admin_username = "Admin"
-admin_password = "adminUFOsaronno"
+admin_username = "admin"
+admin_password = "admin123"
 
 
 def create_app():

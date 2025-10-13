@@ -1,111 +1,73 @@
-# Attività UFO - Activity Tracker
+## 🚀 Attività UFO - Activity Tracker
 
-Un'applicazione web leggera per tracciare le presenze tramite QR code, costruita con Flask e SQLAlchemy.
+Un'app web leggera per tracciare le presenze tramite QR code, sviluppata con Flask e SQLAlchemy. Ideale per gestire le attività di UFO Saronno.
 
-## 📝 Funzionalità
+### ⚙️ Funzionalità
 
-* Registrazione studenti con:
+- Registrazione studenti:
 
-  * Nome e cognome
-  * Scuola
-  * Classe
-  * Username univoco
-* Check-in giornaliero tramite username
-* Database SQLite per salvare presenze
-* Admin panel protetto da login:
+  - Nome e cognome
+  - Scuola
+  - Classe
+  - Username univoco
 
-  * Visualizzazione presenze di ogni utente
-  * Esportazione presenze in CSV
-* Sistema leggero
+- Check-in giornaliero tramite username
 
-## 💻 Tecnologie
+- Database SQLite per salvare le presenze
 
-* Python 3.10+
-* Flask
-* Flask-Login
-* SQLAlchemy
-* SQLite
-* HTML/Jinja templates
-* TailwindCSS (opzionale per lo stile)
+- Admin panel protetto da login per visualizzare e gestire i dati
 
-## 📁 Struttura progetto
+### 🛠️ Tecnologie
+
+- Python 3.x
+- Flask
+- SQLAlchemy
+- SQLite
+- HTML/CSS
+
+### 🚀 Avvio rapido
+
+1. Clona la repo:
+
+   ```bash
+   git clone https://github.com/acrazypie/attivita_ufo.git
+   cd attivita_ufo
+   ```
+
+2. Installa le dipendenze:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. Avvia l'app:
+
+   ```bash
+   python app.py
+   ```
+
+4. Accedi all'app su http://localhost:5000
+
+### 🔐 Accesso Admin
+
+- Username: admin
+- Password: admin123
+
+### 📂 Struttura del progetto
 
 ```
-/aulastudio
-├── app.py                     # Entrypoint principale Flask
-├── models.py                  # Modelli SQLAlchemy
-├── /routes
-│   ├── __init__.py
-│   ├── main.py                # Rotte pubbliche
-│   ├── admin.py               # Rotte admin
-├── /utils
-│   ├── export.py              # Funzione esportazione CSV
-├── /templates                 # Pagine HTML
-├── /static                    # File CSS/JS
-├── /instance
-│   └── aulastudio.db          # Database SQLite
-├── requirements.txt
-└── config.py
+attivita_ufo/
+├── app.py          # Entry point dell'app
+├── models.py       # Definizione dei modelli
+├── routes/         # Gestione delle rotte
+├── db/             # Database SQLite (generato automaticamente)
+├── static/         # File statici (CSS, JS, immagini)
+├── templates/      # Template HTML
+├── utils/          # Funzioni di utilità
+├── requirements.txt # Dipendenze del progetto
+└── README.md       # Questo file
 ```
 
-## ⚙️ Installazione
+### 📄 Licenza
 
-1. Clona il repository:
-
-```bash
-git clone https://github.com/acrazypie/attivita_ufo.git
-cd attivita_ufo
-```
-
-2. Crea un ambiente virtuale e installa le dipendenze:
-
-```bash
-python -m venv venv
-source venv/bin/activate      # Linux/macOS
-venv\Scripts\activate       # Windows
-pip install -r requirements.txt
-```
-
-3. Crea il database e l’admin iniziale:
-
-```bash
-python
->>> from app import create_app, db
->>> from models import Admin
->>> app = create_app()
->>> with app.app_context():
-...     admin = Admin(username='admin')
-...     admin.set_password('PasswordMoltoSicura123')
-...     db.session.add(admin)
-...     db.session.commit()
-```
-
-4. Avvia l’app:
-
-```bash
-flask run
-```
-
-L’app sarà disponibile su `http://127.0.0.1:5000`.
-
-## 🔐 Login Admin
-
-* URL: `/admin/login`
-* Credenziali iniziali: `admin` / `PasswordMoltoSicura123`
-* Consente di visualizzare utenti, presenze e scaricare CSV.
-
-## 📄 Note
-
-* L’app può funzionare interamente in locale senza CORS.
-* Puoi aggiungere uno stile con TailwindCSS o qualsiasi altro framework CSS.
-* Per produzione, assicurati di usare un secret key sicuro e considerare un database più robusto di SQLite.
-
-## 🛠 Estensioni future
-
-* Grafici statistiche presenze
-* Notifiche automatiche via email/Telegram
-* Multi-aula e gestione classi avanzata
-
-## ⚖️ Licenza
-
-MIT License
+Distribuito sotto la licenza MIT. Vedi il file LICENSE per i dettagli.
