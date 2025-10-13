@@ -1,6 +1,6 @@
 ## 🚀 Attività UFO - Activity Tracker
 
-Un'app web leggera per tracciare le presenze tramite QR code, sviluppata con Flask e SQLAlchemy. Ideale per gestire le attività di UFO Saronno.
+Un'app web leggera per tracciare le presenze, sviluppata con Flask e SQLAlchemy. Ideata per gestire le attività di UFO Saronno.
 
 ### ⚙️ Funzionalità
 
@@ -70,4 +70,4 @@ attivita_ufo/
 
 ### 📄 Licenza
 
-Distribuito sotto la licenza MIT. Vedi il file LICENSE per i dettagli.
+Distribuito sotto la licenza MIT. Vedi il file [LICENSE](https://github.com/acrazypie/attivita_ufo/blob/main/LICENSE) per i dettagli.
